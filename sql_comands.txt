@@ -1,0 +1,112 @@
+CREATE TABLE vaccine (
+            vaccine_id         SERIAL PRIMARY KEY,
+             name       VARCHAR (400),
+            company_name        VARCHAR (200),
+            no_doses           INTEGER,
+            discription   VARCHAR (1000),
+          availability   VARCHAR (1000),
+          on_hold   VARCHAR (1000)      
+        );
+
+
+CREATE TABLE patient ( 
+          patient_id         SERIAL PRIMARY KEY,
+           F_name     VARCHAR (200), 
+           mi VARCHAR (500), 
+           l_name    VARCHAR (200), 
+           ssn     VARCHAR (500) UNIQUE, 
+           age     INTEGER, 
+           gender     VARCHAR (500), 
+           race     VARCHAR (500), 
+           address     VARCHAR (1000), 
+           occupation_class     VARCHAR (500), 
+           medical_history     VARCHAR (500), 
+           phone_no     VARCHAR (10), 
+           password     VARCHAR (500), 
+           user_id     VARCHAR (500) UNIQUE , 
+           eligibility_status     VARCHAR (500)
+        );
+
+CREATE TABLE nurse ( 
+           nurse_id         SERIAL PRIMARY KEY,
+           F_name     VARCHAR (200), 
+           mi VARCHAR (500), 
+           l_name    VARCHAR (200), 
+           employee_id     VARCHAR (500)  UNIQUE, 
+           age     INTEGER, 
+           gender     VARCHAR (500), 
+           address     VARCHAR (1000), 
+           phone_no     VARCHAR (10), 
+           password     VARCHAR (500), 
+           user_id     VARCHAR (500) UNIQUE 
+        );
+
+   CREATE TABLE timeSlot ( 
+           time_slot_id         SERIAL PRIMARY KEY,
+           date     VARCHAR (500), 
+           start_time VARCHAR (500), 
+           end_time    VARCHAR (500), 
+           max_capacity     INTEGER 
+        );
+CREATE TABLE admin (
+password     VARCHAR (500), 
+           user_id     VARCHAR (500) UNIQUE
+       
+        );
+
+
+INSERT INTO admin(user_id, password) VALUES('admin', 'admin');
+
+
+
+CREATE TABLE vaccinationSchedule ( 
+           schedule_id         SERIAL PRIMARY KEY,
+           patient_id     INTEGER, 
+           time_slot_id INTEGER,
+           vaccine_id    INTEGER,
+           dose_number     INTEGER,
+           FOREIGN KEY(patient_id) REFERENCES patient(patient_id),
+           FOREIGN KEY(time_slot_id) REFERENCES timeSlot(time_slot_id),
+           FOREIGN KEY(vaccine_id) REFERENCES vaccine(vaccine_id)
+        );
+
+
+  CREATE TABLE nurseTimeSlotSchedule ( 
+           assingment_id    SERIAL     PRIMARY KEY ,
+           nurse_id     INTEGER, 
+           time_slot_id INTEGER, 
+           FOREIGN KEY(time_slot_id) REFERENCES timeSlot(time_slot_id), 
+           FOREIGN KEY(nurse_id) REFERENCES nurse(nurse_id) 
+        );
+
+  CREATE TABLE eligibilty ( 
+           patient_id     INTEGER,
+           Ineligible     VARCHAR (500), 
+           FOREIGN KEY(patient_id) REFERENCES patient(patient_id)
+        );
+
+  CREATE TABLE vaccineDelivery ( 
+           vaccine_id         INTEGER,
+           delivery_date     VARCHAR (500), 
+           quantity     VARCHAR (500), 
+           FOREIGN KEY(vaccine_id) REFERENCES vaccine(vaccine_id) 
+        );
+
+	
+CREATE TABLE vaccinationRecord ( 
+           record_id         SERIAL     PRIMARY KEY,
+           patient_id     INTEGER, 
+           nurse_id     INTEGER, 
+           time_slot_id     INTEGER,
+           vaccine_id     INTEGER, 
+           dose_no     VARCHAR (500), 
+           vaccination_time     VARCHAR (500), 
+           FOREIGN KEY(patient_id) REFERENCES patient(patient_id), 
+           FOREIGN KEY(time_slot_id) REFERENCES timeSlot(time_slot_id),
+           FOREIGN KEY(vaccine_id) REFERENCES vaccine(vaccine_id), 
+           FOREIGN KEY(nurse_id) REFERENCES nurse(nurse_id) 
+        );
+
+
+
+
