@@ -142,12 +142,3 @@ Step 6: Access the Application
 You should end up with the below page,
 
  
-
-  
- 
-
-  
-   
-
- 
-![image](https://github.com/hemaalatha-nk/final_480_project/assets/143139368/08423d0f-b44c-475d-97e5-8c3f89546570)
