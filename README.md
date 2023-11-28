@@ -1,70 +1,156 @@
-# Getting Started with Create React App
+**How to Run the Code:**
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**Step 1: Unzip the File**
+•	Locate the compressed file and unzip it using your preferred file extraction software.
 
-## Available Scripts
+**How to Run the Code:**
 
-In the project directory, you can run:
+Step 1: Unzip the File
+•	Locate the compressed file and unzip it using your preferred file extraction software.
 
-### `npm start`
+Step 2: Set Up the PostgreSQL Database
+•	Ensure PostgreSQL is installed and running on your system.
+•	Open a terminal or command prompt.
+•	Access PostgreSQL command line by typing:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+o	psql -U postgres
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+•	This command logs you into the PostgreSQL interactive terminal with the default 'postgres' user.
 
-### `npm test`
+•	Create a new user with the following command:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+o	CREATE ROLE me WITH LOGIN PASSWORD 'password';
 
-### `npm run build`
+•	Create a new database named 'UIH' and assign ownership to the user 'me':
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+o	CREATE DATABASE UIH OWNER me;
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+•	This command creates a new database named 'UIH' and sets 'me' as its owner.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Step 3: Set Up Tables
+•	Locate the SQL file for creating tables. It should be within the “dbms_proj” folder.
 
-### `npm run eject`
+•	In the terminal or command prompt, navigate to the folder containing the SQL file using the cd command:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+o	cd path/to/dbms_proj
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+•	Run the SQL file in the PostgreSQL command line to create tables within the 'UIH' database:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+o	psql -U me -d UIH -a -f dbexport.sql
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+•	Replace “dbexport.sql” with the actual name of your SQL file containing table creation queries.
 
-## Learn More
+Step 4: Run the Node Server for Backend
+•	Open your terminal or command prompt.
+•	Navigate to the 'dbms_proj' directory using the cd command:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+o	cd path/to/dbms_proj
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+•	Run the Node server by executing:
 
-### Code Splitting
+o	node server2.js
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+•	This command will start the server and listen for incoming connections.
 
-### Analyzing the Bundle Size
+Step 5: Start the UI
+•	Open a new terminal window or tab.
+•	Navigate to the 'ui_health' directory within the project using the cd command:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+o	cd path/to/ui_health
 
-### Making a Progressive Web App
+•	Run the following command to start the UI application:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+o	npm start
 
-### Advanced Configuration
+•	This command will initiate the UI application.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Step 6: Access the Application
+•	Open a web browser.
+•	Enter the appropriate URL(http://localhost:3006) or IP address and port number to access the application. 
+(Note: admin login credentials username :admin, password: admin)
 
-### Deployment
+You should end up with the below page,
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+ 
 
-### `npm run build` fails to minify
+  
+ 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+  
+   
+
+ 
+![Uploading image.png…]()
+
+•	Ensure PostgreSQL is installed and running on your system.
+•	Open a terminal or command prompt.
+•	Access PostgreSQL command line by typing:
+
+o	psql -U postgres
+
+•	This command logs you into the PostgreSQL interactive terminal with the default 'postgres' user.
+
+•	Create a new user with the following command:
+
+o	CREATE ROLE me WITH LOGIN PASSWORD 'password';
+
+•	Create a new database named 'UIH' and assign ownership to the user 'me':
+
+o	CREATE DATABASE UIH OWNER me;
+
+•	This command creates a new database named 'UIH' and sets 'me' as its owner.
+
+Step 3: Set Up Tables
+•	Locate the SQL file for creating tables. It should be within the “dbms_proj” folder.
+
+•	In the terminal or command prompt, navigate to the folder containing the SQL file using the cd command:
+
+o	cd path/to/dbms_proj
+
+•	Run the SQL file in the PostgreSQL command line to create tables within the 'UIH' database:
+
+o	psql -U me -d UIH -a -f dbexport.sql
+
+•	Replace “dbexport.sql” with the actual name of your SQL file containing table creation queries.
+
+Step 4: Run the Node Server for Backend
+•	Open your terminal or command prompt.
+•	Navigate to the 'dbms_proj' directory using the cd command:
+
+o	cd path/to/dbms_proj
+
+•	Run the Node server by executing:
+
+o	node server2.js
+
+•	This command will start the server and listen for incoming connections.
+
+Step 5: Start the UI
+•	Open a new terminal window or tab.
+•	Navigate to the 'ui_health' directory within the project using the cd command:
+
+o	cd path/to/ui_health
+
+•	Run the following command to start the UI application:
+
+o	npm start
+
+•	This command will initiate the UI application.
+
+Step 6: Access the Application
+•	Open a web browser.
+•	Enter the appropriate URL(http://localhost:3006) or IP address and port number to access the application. 
+(Note: admin login credentials username :admin, password: admin)
+
+You should end up with the below page,
+
+ 
+
+  
+ 
+
+  
+   
+
+ 
+![image](https://github.com/hemaalatha-nk/final_480_project/assets/143139368/08423d0f-b44c-475d-97e5-8c3f89546570)
