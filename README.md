@@ -140,5 +140,20 @@ Step 6: Access the Application
 (Note: admin login credentials username :admin, password: admin)
 
 You should end up with the below page,
+![](dbms_ss/Picture1.png)
+
+![](dbms_ss/Picture2.png)
+
+![](dbms_ss/Picture3.png)
+
+![](dbms_ss/Picture4.png)
+
+![](dbms_ss/Picture5.png)
+
+![](dbms_ss/Picture6.png)
+
+![](dbms_ss/Picture7.png)
+
+
 
  
