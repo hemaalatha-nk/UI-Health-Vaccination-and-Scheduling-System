@@ -154,6 +154,10 @@ You should end up with the below page,
 
 ![](dbms_ss/Picture7.png)
 
+![](dbms_ss/Picture8.png)
+
+![](dbms_ss/Picture9.png)
+
 
 
  
